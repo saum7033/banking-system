@@ -65,6 +65,27 @@ public class AccountService {
 
         }
 
+        public void deductBalance(String accountNumber, BigDecimal amount){
+        log.info("Deducting balance: {} from account: {}", amount, accountNumber);
+            Account account = accountRepository.findByAccountNumber(accountNumber)
+                    .orElseThrow(() -> new RuntimeException("Account Not Found"));
+            if(account.getBalance().compareTo(amount) < 0){
+                throw new RuntimeException("Insufficient balance");
+            }
+            account.setBalance(account.getBalance().subtract(amount));
+            accountRepository.save(account);
+            log.info("Balance deducted: {} from account: {}", amount, accountNumber);
+        }
+
+        public void creditBalance(String accountNumber, BigDecimal amount){
+        log.info("Crediting balance: {} to account: {}", amount, accountNumber);
+            Account account = accountRepository.findByAccountNumber(accountNumber)
+                    .orElseThrow(() -> new RuntimeException("Account Not Found"));
+            account.setBalance(account.getBalance().add(amount));
+            accountRepository.save(account);
+            log.info("Balance credited: {} to account: {}", amount, accountNumber);
+        }
+
         private String generateAccountNumber(){
         String accountNumber;
         do{
