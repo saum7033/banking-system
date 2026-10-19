@@ -47,8 +47,11 @@ public class AccountService {
         String accountNumber;
         do{
             long number = secureRandom.nextLong(1_000_000_000_000L);
+            accountNumber = String.format("%012d",number);
             }
-            while()
+            while(accountRepository.existByAccountNumber(accountNumber));
+
+            return accountNumber;
         }
 
         private AccountResponse mapToResponse(Account account){
