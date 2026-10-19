@@ -48,7 +48,7 @@ public class AccountService {
         do{
             long number = secureRandom.nextLong(1_000_000_000_000L);
             }
-            while();
+            while()
         }
 
         private AccountResponse mapToResponse(Account account){
