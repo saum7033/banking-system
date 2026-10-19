@@ -92,7 +92,7 @@ public class AccountService {
             long number = secureRandom.nextLong(1_000_000_000_000L);
             accountNumber = String.format("%012d",number);
             }
-            while(accountRepository.existByAccountNumber(accountNumber));
+            while(accountRepository.existsByAccountNumber(accountNumber));
 
             return accountNumber;
         }
