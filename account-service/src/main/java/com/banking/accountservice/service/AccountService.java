@@ -69,8 +69,11 @@ public class AccountService {
         log.info("Deducting balance: {} from account: {}", amount, accountNumber);
             Account account = accountRepository.findByAccountNumber(accountNumber)
                     .orElseThrow(() -> new RuntimeException("Account Not Found"));
+            if(account.getStatus() != AccountStatus.ACTIVE){
+                throw new RuntimeException("Account is not active" + accountNumber);
+            }
             if(account.getBalance().compareTo(amount) < 0){
-                throw new RuntimeException("Insufficient balance");
+                throw new RuntimeException("Insufficient balance" + accountNumber);
             }
             account.setBalance(account.getBalance().subtract(amount));
             accountRepository.save(account);
