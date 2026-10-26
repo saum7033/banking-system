@@ -18,7 +18,7 @@ public class AccountEventConsumer {
     @KafkaListener(topics = "transaction.completed")
     public void consumeTransactionCompleted(@Payload Map<String,Object> payload){
         try{
-            String receiverAccount = payload.get("receiverAccountNumber");
+            String receiverAccount = (String) payload.get("receiverAccountNumber");
             BigDecimal amount = new BigDecimal(payload.get("amount").toString());
             log.info("Crediting amount : {} amount: {}", receiverAccount,amount);
             accountService.creditBalance(receiverAccount,amount);
