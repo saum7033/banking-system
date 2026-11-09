@@ -27,7 +27,7 @@ public class TransactionController {
                 .body(transactionService.transfer(request));
     }
 
-    @GetMapping("/{transactionId")
+    @GetMapping("/{transactionId}")
     public ResponseEntity<TransactionResponse> getTransaction(
             @PathVariable String transactionId
     ){
