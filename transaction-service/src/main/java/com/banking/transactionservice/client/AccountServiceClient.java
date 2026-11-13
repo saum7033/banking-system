@@ -15,4 +15,10 @@ public interface AccountServiceClient {
                          @RequestParam BigDecimal amount);
 
     //SAGA STEP N0 - 1 DEDUCT FROM SENDER
+
+    @PutMapping("/api/v1/accounts/{accountNumber}/credit")
+    String creditBalance(
+            @PathVariable String accountNumber,
+            @RequestParam BigDecimal amount
+    );
 }
