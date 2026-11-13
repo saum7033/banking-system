@@ -1,15 +1,9 @@
 package com.banking.transactionservice.config;
 
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.context.annotation.Configuration;
 
-@RestController
-@RequestMapping("/api/v1/transaction")
-@Slf4j
-@RequiredArgsConstructor
+@Configuration
 public class RedisConfig {
 
 }
