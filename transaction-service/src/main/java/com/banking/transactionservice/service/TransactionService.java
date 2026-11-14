@@ -187,8 +187,8 @@ public class TransactionService {
 
     public void processCleanResult(String transactionId){
         Transaction transaction = transactionRepository.findById(transactionId)
-                .orElseThrpw(()-> new RuntimeException(
-                        "Transaction not found" + transactionId
+                .orElseThrow(() -> new RuntimeException(
+                        "Transaction not found: " + transactionId
                 ));
         if(transaction.getStatus() != TransactionStatus.PROCESSING){
             log.error("Transaction {} not PROCESSING - skipping", transactionId);
