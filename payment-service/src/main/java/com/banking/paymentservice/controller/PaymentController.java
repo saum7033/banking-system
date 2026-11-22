@@ -5,7 +5,6 @@ import com.banking.paymentservice.dto.PaymentOrderResponse;
 import com.banking.paymentservice.repository.PaymentRepository;
 import com.banking.paymentservice.service.PaymentService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.Positive;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -36,7 +35,7 @@ public class PaymentController {
     }
 
     //Razorpay webhook endpoint
-    @Positive("/webhook")
+    @PostMapping("/webhook")
     public ResponseEntity<String> handleWebhook(
         @RequestBody
         Map<String,Object> payload){

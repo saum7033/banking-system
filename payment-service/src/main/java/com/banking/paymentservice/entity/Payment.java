@@ -16,7 +16,6 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class Payment {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
 
     private String razorpayOrderId;
@@ -32,6 +31,8 @@ public class Payment {
     private PaymentStatus status;
 
     private String failureReason;
+
+    private String description;
 
     @CreationTimestamp
     private LocalDateTime createdAt;
