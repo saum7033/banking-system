@@ -49,3 +49,10 @@ jobs:
         SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/banking
         SPRING_DATASOURCE_USERNAME: postgres
         SPRING_DATASOURCE_PASSWORD: postgres
+
+    - name: Build Payment Service
+      run: mvn -B package --file payment-service/pom.xml
+      env:
+        SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/banking
+        SPRING_DATASOURCE_USERNAME: postgres
+        SPRING_DATASOURCE_PASSWORD: postgres
