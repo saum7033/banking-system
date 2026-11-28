@@ -32,7 +32,7 @@ public class PaymentService {
     @Value("${razorpay.key-secret}")
     private String keySecret;
 
-    private static final String PAYMENT_COMPLETED_TOPIC = "payemnt.completed";
+    private static final String PAYMENT_COMPLETED_TOPIC = "payment.completed";
     private static final String PAYMENT_FAILED_TOPIC = "payment.failed";
 
     /**create razorpay payment order
